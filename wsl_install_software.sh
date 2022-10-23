@@ -46,6 +46,10 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
 exec "$SHELL"
 
+# ssh config
+mkdir -p –/.ssh
+curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/profile_ssh_add.txt >> ~/.profile
+
 # install the desired python versions
 pyenv install 3.10.8 
 pyenv install 3.9.15 
@@ -65,7 +69,3 @@ cd workspace
 pip install cookiecutter invoke boto3 docker pytz nbconvert \
 mkdocs mkdocs-material mkdocs-material-extensions mkdocs-autorefs \
 mkdocs-gen-files mkdocs-literate-nav mkdocstrings mkdocstrings-python
-
-
-
-
