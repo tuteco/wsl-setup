@@ -26,10 +26,20 @@ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
 echo 'eval "$(pyenv init -)"' >> ~/.profile
 
+exec "$SHELL"
+
+# install and activate the pyenv-virtualenv plugin
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+exec "$SHELL"
+
+# install the desired python versions
 pyenv install 3.10.8 
 pyenv install 3.9.15 
 
 pyenv global 3.10.8
+
+pyenv virtualenv 3.10.8 py-invoke-basics-3.10
 
 curl -sSL https://install.python-poetry.org | python3 -
 
@@ -38,3 +48,7 @@ mkdir ~/docker-volumes
 
 rm -rf ~/workspace
 mkdir ~/workspace
+
+
+
+
