@@ -11,11 +11,14 @@ Open a Powershell as administrator and
 wsl -l -v  # list the locally installed images
 wsl --list --online  # list all available images
 wsl --install -d Ubuntu  
-wsl --setdefault Ubuntu
 ```
 
-Go to your start menu and search for the Ubuntu Porgram. It will start the WSL. During the first start, you will be asked for 
-the username and password you want to use inside the Ubuntu distro
+The Ubuntu WSL will start ask for the username and password you want to use inside the Ubuntu distro
+
+Make the Ubuntu WSL the default with
+```
+wsl --setdefault Ubuntu
+```
 
 To install all required software, just run the following command:
 ```
