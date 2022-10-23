@@ -43,7 +43,7 @@ source ~/.profile
 exec "$SHELL"
 
 # activate the pyenv-virtualenv plugin
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+#echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
 exec "$SHELL"
 
@@ -56,7 +56,7 @@ pyenv install 3.10.8
 pyenv install 3.9.15 
 pyenv global 3.10.8
 
-pyenv virtualenv py-invoke-basics-3.10
+# pyenv virtualenv py-invoke-basics-3.10
 
 # poetry
 curl -sSL https://install.python-poetry.org | python3 -
@@ -65,8 +65,8 @@ curl -sSL https://install.python-poetry.org | python3 -
 mkdir -p ~/docker-volumes
 mkdir -p ~/workspace
 
-echo "py-invoke-basics-3.10" >> workspace/.python-version
-cd workspace
-pip install cookiecutter invoke boto3 docker pytz nbconvert \
-mkdocs mkdocs-material mkdocs-material-extensions mkdocs-autorefs \
-mkdocs-gen-files mkdocs-literate-nav mkdocstrings mkdocstrings-python
+# echo "py-invoke-basics-3.10" >> workspace/.python-version
+# cd workspace
+# pip install cookiecutter invoke boto3 docker pytz nbconvert \
+# mkdocs mkdocs-material mkdocs-material-extensions mkdocs-autorefs \
+# mkdocs-gen-files mkdocs-literate-nav mkdocstrings mkdocstrings-python
