@@ -1,11 +1,10 @@
 # wsl-setup
 Get ready with Windows WSL for python development
 
-Open a Powershell as administrator and
+Open a Powershell and
 - check the status of installed ditros
 - list the available distros online
 - install the Ubuntu distro
-- set the installed Ubuntu distro as default
 
 ```
 wsl -l -v  # list the locally installed images
