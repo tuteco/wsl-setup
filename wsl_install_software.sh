@@ -52,9 +52,9 @@ mkdir -p ~/.ssh
 curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/profile_ssh_add.txt >> ~/.profile
 
 # install the desired python versions
-pyenv install 3.10.8 
-pyenv install 3.9.15 
-pyenv global 3.10.8
+pyenv install 3.10.10
+pyenv install 3.9.16
+pyenv global 3.10.10
 
 # pyenv virtualenv py-invoke-basics-3.10
 
