@@ -1,6 +1,6 @@
-# WSLl2-setup 
-Get ready with Windows WSL for python development. The setup prepares you for local development with Docker and working in AWS.
-We mainly work with JetBrains PyCharm Professional, but you can also use this setup if you want to work with VScode
+# WSL2-setup 
+Get ready with Windows WSL2 for python development. The setup prepares you for local development with Docker and working in AWS.
+We mainly work with JetBrains PyCharm Professional, but you can also use this setup if you want to work with VS Code
 
 The following setup is tested with
 - Windows 11 Pro ( Version 22H2 )
