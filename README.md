@@ -98,11 +98,11 @@ and updated to the latest Version of Ubuntu
 
 ```
 Remove-Item alias:curl
-mkdir ~\wsl2
-cd ~\Downloads
+mkdir $HOME\wsl2
+cd $HOME\Downloads
 curl "https://cloud-images.ubuntu.com/wsl/lunar/current/ubuntu-lunar-wsl-amd64-wsl.rootfs.tar.gz" --output ubuntu-23.04-wsl-rootfs.tar.gz
 $WSL2_INSTANCE="ubuntu-2304-dev1"
-wsl --import $WSL2_INSTANCE "~\wsl2\$WSL2_INSTANCE" .\ubuntu-23.04-wsl-rootfs.tar.gz
+wsl --import $WSL2_INSTANCE $HOM\wsl2\$WSL2_INSTANCE .\ubuntu-23.04-wsl-rootfs.tar.gz
 wsl -d $WSL2_INSTANCE
 ```
 
