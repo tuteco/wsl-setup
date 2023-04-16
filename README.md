@@ -146,7 +146,17 @@ GITHUB_USERNAME=<your-username>
 ```shell
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git
 ```
+```shell
+chezmoi apply
+```
 
+## keep your WSL instace up to date
+  
+It's required to keep your WSL instance up to date. form time to time you can accomplish this with the following command
+```shell
+sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get full-upgrade -y;'
+```
+  
 ## Set up a second distro
 inspired by https://cloudbytes.dev/snippets/how-to-install-multiple-instances-of-ubuntu-in-wsl2
 and updated to the latest Version of Ubuntu. Run the following commands in a
