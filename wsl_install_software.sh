@@ -8,11 +8,12 @@ sudo apt-get update \
 make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-unzip rsync
+unzip rsync wslu binfmt-support
 
 # required software tools directories
 mkdir -p .local/bin
 mkdir ~/tmp
+
 
 # aws cli installation
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -77,3 +78,6 @@ sudo tee /etc/wsl.conf -a <<_EOF
 systemd=true
 _EOF
 
+echo '-------------------------------------------------------'
+echo 'please restart your WSL2 to activate all changes'
+echo '-------------------------------------------------------'

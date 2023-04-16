@@ -36,7 +36,7 @@ Open a ___PowerShell Terminal___ and
 ```
 wsl -l -v  # list the locally installed images
 wsl --list --online  # list all available images
-wsl --install -d Ubuntu  
+wsl --install -d Ubuntu
 ```
 
 The Ubuntu WSL will start to ask for the username and password you want to use inside the Ubuntu distro
@@ -52,8 +52,17 @@ To install all the required software packages, just run the following command:
 ```shell
 curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/wsl_install_software.sh | bash
 ```
+After a restart of WSL, you need to run the following commands as a workaround for WSL interop issue
+```shell
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+sudo update-binfmts --enable
+sudo apt-get reinstall binfmt-support
+```
+You need to restart WSL again.
 
-Once you have run the installation script, you can continue with SSH config for git. 
+The workaround steps are taken from:
+- https://github.com/microsoft/WSL/issues/8843
+- https://github.com/microsoft/WSL/issues/718
 
 ## SSH config for git
 
@@ -116,6 +125,10 @@ minimalistic approach to do the basic editing required for everyday use.
 ```shell
 git config --global core.editor vim
 ```
+alternatively you can use VS code
+```shell
+git config --global core.editor "code -w"
+```
 
 More on git config can be found in the 
 [firts time setup guide](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) or the 
@@ -123,9 +136,27 @@ More on git config can be found in the
 
 ### automate settings sync for dotfiles
 if you use multiple WSL instances or machines, it helps a lot to have the settings stored in the so called dotfiles 
-in sync. There is a small tool called [chezmoi](https://www.chezmoi.io/) to accomplish this task. We won't repeat
-their manual here. 
+in sync. There is a small tool called [chezmoi](https://www.chezmoi.io/) to accomplish this task.
 
+If you already did an initial setup and created a private git repo in your GitHub account, you can use the commands
+below:
+```shell
+GITHUB_USERNAME=<your-username>
+```
+```shell
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git
+```
+```shell
+chezmoi apply
+```
+
+## keep your WSL instace up to date
+  
+It's required to keep your WSL instance up to date. form time to time you can accomplish this with the following command
+```shell
+sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get full-upgrade -y;'
+```
+  
 ## Set up a second distro
 inspired by https://cloudbytes.dev/snippets/how-to-install-multiple-instances-of-ubuntu-in-wsl2
 and updated to the latest Version of Ubuntu. Run the following commands in a
