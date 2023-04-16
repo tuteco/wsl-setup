@@ -8,7 +8,7 @@ sudo apt-get update \
 make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
 libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-unzip rsync
+unzip rsync wslu binfmt-support
 
 # required software tools directories
 mkdir -p .local/bin
@@ -60,9 +60,9 @@ curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/git_branch_to_brash
 
 # install the desired python versions
 # we use 3.10 as default version for productive use
-pyenv install 3.11.3
+# pyenv install 3.11.3
 pyenv install 3.10.11
-pyenv install 3.9.16
+# pyenv install 3.9.16
 pyenv global 3.10.11
 
 # install poetry
@@ -72,3 +72,11 @@ curl -sSL https://install.python-poetry.org | python3 -
 mkdir -p ~/docker-volumes
 mkdir -p ~/workspace
 
+# ensure systemd gets started, so that we can use snap to install software
+sudo tee /etc/wsl.conf -a <<_EOF
+[boot]
+systemd=true
+_EOF
+
+
+sudo update-binfmts --enable
