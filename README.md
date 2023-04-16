@@ -125,6 +125,10 @@ minimalistic approach to do the basic editing required for everyday use.
 ```shell
 git config --global core.editor vim
 ```
+alternatively you can use VS code
+```shell
+git config --global core.editor "code -w"
+```
 
 More on git config can be found in the 
 [firts time setup guide](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup) or the 
@@ -132,9 +136,16 @@ More on git config can be found in the
 
 ### automate settings sync for dotfiles
 if you use multiple WSL instances or machines, it helps a lot to have the settings stored in the so called dotfiles 
-in sync. There is a small tool called [chezmoi](https://www.chezmoi.io/) to accomplish this task. We won't repeat
-their manual here. Just a word of warning, that you should __NOT__ use snap to install it as the required activation 
-of systemd breaks the interopability beween WSL and WIndows
+in sync. There is a small tool called [chezmoi](https://www.chezmoi.io/) to accomplish this task.
+
+If you already did an initial setup and created a private git repo in your GitHub account, you can use the commands
+below:
+```shell
+GITHUB_USERNAME=<your-username>
+```
+```shell
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply git@github.com:$GITHUB_USERNAME/dotfiles.git
+```
 
 ## Set up a second distro
 inspired by https://cloudbytes.dev/snippets/how-to-install-multiple-instances-of-ubuntu-in-wsl2
