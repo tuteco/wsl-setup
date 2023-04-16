@@ -54,20 +54,15 @@ curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/wsl_install_softwar
 ```
 After a restart of WSL, you need to run the following commands as a workaround for WSL interop issue
 ```shell
-sudo sh -s --<EOF 
-echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf
-update-binfmts --enable
-apt-get reinstall binfmt-support
-apt-get update -y
-apt-get upgrade -y
-EOF
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+sudo update-binfmts --enable
+sudo apt-get reinstall binfmt-support
 ```
 You need to restart WSL again.
 
 The workaround steps are taken from:
 - https://github.com/microsoft/WSL/issues/8843
 - https://github.com/microsoft/WSL/issues/718
-and are enhanded because of intense testing what works.
 
 ## SSH config for git
 
