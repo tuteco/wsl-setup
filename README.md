@@ -52,8 +52,17 @@ To install all the required software packages, just run the following command:
 ```shell
 curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/wsl_install_software.sh | bash
 ```
+After a restart of WSL, you need to run the following commands as a workaround for WSL interop issue
+```shell
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+sudo update-binfmts --enable
+sudo apt-get reinstall binfmt-support
+```
+You need to restart WSL again.
 
-Once you have run the installation script, you can continue with SSH config for git. 
+The workaround steps are taken from:
+- https://github.com/microsoft/WSL/issues/8843
+- https://github.com/microsoft/WSL/issues/718
 
 ## SSH config for git
 

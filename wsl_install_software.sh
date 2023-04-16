@@ -81,5 +81,4 @@ _EOF
 
 echo '-------------------------------------------------------'
 echo 'please restart your WSL2 to activate all changes'
-echo 'next step is to run wsl_interop_workaround.sh script'
 echo '-------------------------------------------------------'
