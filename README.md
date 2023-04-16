@@ -124,7 +124,8 @@ More on git config can be found in the
 ### automate settings sync for dotfiles
 if you use multiple WSL instances or machines, it helps a lot to have the settings stored in the so called dotfiles 
 in sync. There is a small tool called [chezmoi](https://www.chezmoi.io/) to accomplish this task. We won't repeat
-their manual here. 
+their manual here. Just a word of warning, that you should __NOT__ use snap to install it as the required activation 
+of systemd breaks the interopability beween WSL and WIndows
 
 ## Set up a second distro
 inspired by https://cloudbytes.dev/snippets/how-to-install-multiple-instances-of-ubuntu-in-wsl2

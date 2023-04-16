@@ -14,6 +14,7 @@ unzip rsync
 mkdir -p .local/bin
 mkdir ~/tmp
 
+
 # aws cli installation
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
@@ -70,10 +71,4 @@ curl -sSL https://install.python-poetry.org | python3 -
 # development directory structure
 mkdir -p ~/docker-volumes
 mkdir -p ~/workspace
-
-# ensure systemd gets started, so that we can use snap to install software
-sudo tee /etc/wsl.conf -a <<_EOF
-[boot]
-systemd=true
-_EOF
 
