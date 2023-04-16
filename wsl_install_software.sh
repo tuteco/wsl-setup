@@ -4,6 +4,7 @@
 
 # update and install required software packages
 sudo apt-get update \
+&& sudo apt-get upgrade \
 && sudo apt-get install --no-install-recommends -y \
 make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
@@ -78,5 +79,11 @@ sudo tee /etc/wsl.conf -a <<_EOF
 systemd=true
 _EOF
 
-
+# WSL interop workaround
+# https://github.com/microsoft/WSL/issues/8843
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
 sudo update-binfmts --enable
+
+echo '-------------------------------------------------------'
+echo 'please restart your WSL2 to activate all changes'
+echo '-------------------------------------------------------'
