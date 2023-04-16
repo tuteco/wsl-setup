@@ -4,7 +4,6 @@
 
 # update and install required software packages
 sudo apt-get update \
-&& sudo apt-get upgrade -y \
 && sudo apt-get install --no-install-recommends -y \
 make build-essential libssl-dev zlib1g-dev \
 libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
