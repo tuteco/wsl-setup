@@ -79,11 +79,7 @@ sudo tee /etc/wsl.conf -a <<_EOF
 systemd=true
 _EOF
 
-# WSL interop workaround
-# https://github.com/microsoft/WSL/issues/8843
-sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
-sudo update-binfmts --enable
-
 echo '-------------------------------------------------------'
 echo 'please restart your WSL2 to activate all changes'
+echo 'next step is to run wsl_interop_workaround.sh script'
 echo '-------------------------------------------------------'
