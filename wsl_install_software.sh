@@ -61,9 +61,9 @@ curl https://raw.githubusercontent.com/tuteco/wsl-setup/main/git_branch_to_brash
 
 # install the desired python versions
 # we use 3.10 as default version for productive use
-# pyenv install 3.11.3
+pyenv install 3.11.3
 pyenv install 3.10.11
-# pyenv install 3.9.16
+pyenv install 3.9.16
 pyenv global 3.10.11
 
 # install poetry
