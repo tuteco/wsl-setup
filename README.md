@@ -1,13 +1,12 @@
 # WSL2-setup 
-Get ready with Windows WSL2 for python development. The setup prepares you for local development with Docker and working in AWS.
+Get ready with Windows WSL2 for python development. The setup prepares you for local development with containers (podman) and working in AWS.
 We mainly work with JetBrains PyCharm Professional, but you can also use this setup if you want to work with VS Code
 
 The following setup is tested with
 - Windows 11 Pro ( Version 22H2 )
 - WSL2 feature enabled
-- VS Code 1.77
-- PyCharm Professional 2023.1
-- Docker Desktop 4.18.0
+- VS Code 1.80
+- PyCharm Professional 2023.2
 
 If you have other versions than the ones mentioned above, you might encounter different outcomes or run into issues. 
 In case of any questions or suggestions, please open up an issue here.
@@ -17,8 +16,7 @@ Task that we will accomplish during this setup
 - install software packages required for modern python development: [pyenv](https://github.com/pyenv/pyenv) 
   and [poetry](https://python-poetry.org/docs)
 - configure ssh agent to load your certificates automatically
-- ensure AWS client is configured and authentication with saml2aws works
-- set up a second WSL2 instance with the latest Ubuntu 23.04
+- ensure AWS client is installed
 - remove a WSL2 instance
 
 If not stated otherwise, all commands will run inside the WSL instance in Linux bash.
@@ -104,13 +102,6 @@ wsl -l -v
 wsl -d $WSL2_INSTANCE
 ```
 
-## Configure AWS CLI and saml2aws
-tbd. 
-
-In the meantime, please help yourself with 
-the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) and 
-[saml2aws](https://github.com/Versent/saml2aws) documentation.  
-
 ## Global git config
 If you have set up a new WSL2 instance, you should create a global git config. The minimum you have to do is set your 
 username and email address. Please set the placeholders `<your-name>` and `<your-email-address>` in the script with your
@@ -156,47 +147,6 @@ It's required to keep your WSL instance up to date. form time to time you can ac
 ```shell
 sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get full-upgrade -y;'
 ```
-  
-## Set up a second distro
-inspired by https://cloudbytes.dev/snippets/how-to-install-multiple-instances-of-ubuntu-in-wsl2
-and updated to the latest Version of Ubuntu. Run the following commands in a
-___PowerShell terminal___
-
-```
-Remove-Item alias:curl
-mkdir $HOME\wsl2
-cd $HOME\Downloads
-curl "https://cloud-images.ubuntu.com/wsl/lunar/current/ubuntu-lunar-wsl-amd64-wsl.rootfs.tar.gz" --output ubuntu-23.04-wsl-rootfs.tar.gz
-$WSL2_INSTANCE="ubuntu-2304-dev1"
-wsl --import $WSL2_INSTANCE $HOME\wsl2\$WSL2_INSTANCE .\ubuntu-23.04-wsl-rootfs.tar.gz
-wsl -d $WSL2_INSTANCE
-```
-
-The last command started your second WSL2 instance. Now you can create your user, set the password and ensure that 
-you are automatically logged in.
-
-Please replace `<USERNAME>` with your own username.
-
-```shell
-NEW_USER=<USERNAME>
-```
-```shell
-useradd -m -G sudo -s /bin/bash "$NEW_USER"
-passwd "$NEW_USER"
-```
-To ensure your user is login in by default instead of roo, execute the following command in the WSL instance:
-```shell
-tee /etc/wsl.conf -a <<_EOF
-[user]
-default=${NEW_USER}
-_EOF
-```
-
-You need to restart your WSL instance to activate the change. 
-Once you are successfully logged in, you can proceed with 
-- Install required linux packages
-- SSH config for git
-- Configure AWS CLI and saml2aws
 
 ## Remove a WSL instance
 Removal of a WSL2 instance is straight forward. 
